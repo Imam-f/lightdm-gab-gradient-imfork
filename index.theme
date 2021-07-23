@@ -1,6 +1,6 @@
 [theme]
-name=lightdm-gab-gradient
+name=lightdm-gab-gradient-imfork
 description=Animated Gradient background
 engine=lightdm-webkit-greeter
 url=index.html
-session=xubuntu
+session=i3
