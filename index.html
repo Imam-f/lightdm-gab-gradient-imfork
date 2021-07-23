@@ -5,14 +5,11 @@
     <link rel="stylesheet" href="static/style.css" />
 </head>
 <body>
-    <div id="login-background"></div>
+    <!-- <div id="login-background"></div> -->
     <div id="wrapper">
         <!--<div id="clock-box">
             <script>startTime();</script>
         </div> -->
-        <br>
-        <br>
-        <br>
         <div id="login-box">
             <img id="login-picture">
             <div id="login-response"></div>
@@ -25,7 +22,7 @@
                     </div>
                 </div>
                 <div id="next">></div>
-                <input placeholder="パスワード" type="password" id="login-password" tabindex="2">
+                <input placeholder="パスワード" type="password" id="login-password" tabindex="2"/>
                 <button id="login-button" type="submit" tabindex="3">
                     ログイン
                 </button>
@@ -34,8 +31,10 @@
     </div>
     
     <div id="login-bar">
-        <img id="login-shutdown" src="static/action-shutdown.png" onclick="lightdm.shutdown();">
-        <img id="login-restart" src="static/action-reboot.png" onclick="lightdm.restart();">
+        <div id="login-shutdown" onclick="lightdm.shutdown();">Shutdown</div>
+        <div id="login-restart" onclick="lightdm.restart();">Restart</div>
+        <!-- <img id="login-shutdown" src="static/action-shutdown.png" onclick="lightdm.shutdown();">
+        <img id="login-restart" src="static/action-reboot.png" onclick="lightdm.restart();"> -->
     </div>
     <script src="js/mock.js"></script>
     <script src="js/jquery-2.1.0.min.js"></script>

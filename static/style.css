@@ -11,6 +11,15 @@ body
 	-webkit-animation: AnimationName 30s ease infinite;
 	-moz-animation: AnimationName 30s ease infinite;
 	animation: AnimationName 30s ease infinite;
+
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+
+	margin : 0;
 }
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 51%}
@@ -29,10 +38,10 @@ body
 }
 
 
-/*
-#login-background
+
+/* #login-background
 {
-	background-image:url(bg2.jpg);
+	background-image:url(../1.jpg);
 	background-size:100%;
     background-repeat:no-repeat;
     background-color:black;
@@ -43,12 +52,18 @@ body
     width:100%;
     height:100%;
     z-index:-1;
-}
-*/
+} */
+
 #wrapper
 {
 	z-index:1;
-	margin:auto;
+	
+	height: 100vh;
+	width: 100vw;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #clock-box
@@ -65,7 +80,6 @@ body
 	background-color:rgb(255, 255, 255);
 	width:300px;
 	height:385px;
-	margin:100px auto;
 	border-radius:20px;
 	box-shadow: 0 0 100px 5px rgba(0,0,0,0.2);
 	overflow:hidden;
@@ -78,6 +92,7 @@ body
 	margin-top:40px;
 	height:7em;
 	-webkit-transition:opacity .5s ease-in-out;
+	transition:opacity .5s ease-in-out;
 }
 
 #login-response
@@ -162,6 +177,7 @@ body
     /* margin-bottom: 13px; */
     border-spacing: 31px 0px;
     -webkit-transition:margin .8s ease-in-out;
+    transition:margin .8s ease-in-out;
     text-align:center;
     background-color: #f9f9f9;
 }
@@ -204,7 +220,7 @@ body
 	border-radius:10px;
 	text-align: center;
 }
-}
+
 
 #login-password::-webkit-input-placeholder {
     font-family: 'iosevka';
@@ -276,36 +292,45 @@ body
 
 #login-bar
 {
+	z-index: 3;
+	
 	position:absolute;
 	bottom:10px;
-	text-align: center;
 	width:99%;
+
+	display: flex;
+	justify-content: center;
 }
 
 #login-shutdown
 {
-	width:40px;
+	text-align: center;
+	width:80px;
+	font-family:"iosevka";
 	color:white;
 	background-color:transparent;
 	border:none;
-	padding-bottom:2px;
+}
+
+#login-restart
+{
+	text-align: center;
+	width: 80px;
+	font-family:"iosevka";
+	color:white;
+	background-color:transparent;
+	border:none;
 }
 
 #login-shutdown:hover,
 #login-restart:hover
 {
 	cursor:pointer;
+	border-radius: 4px;
+	background-color: #4bd3ff;
 	text-shadow:0 0 3px #FFFFFF;
 }
 
-#login-restart
-{
-	width:42px;
-	font-family:"iosevka";
-	color:white;
-	background-color:transparent;
-	border:none;
-}
 
 /* BG B U B B L E S
 .bg-bubbles {
