@@ -36,7 +36,11 @@ body
     50%{background-position:100% 50%}
     100%{background-position:0% 51%}
 }
-
+@keyframes FadeIn {
+    0% {transform: translate(0,-50px) scale(90%);opacity: 0%;}
+    70% {opacity: 50%;}
+    100% {transform: translate(0,0) scale(100%); opacity:100% ;}
+}	
 
 
 /* #login-background
@@ -84,6 +88,9 @@ body
 	box-shadow: 0 0 100px 5px rgba(0,0,0,0.2);
 	overflow:hidden;
 
+	animation-name: FadeIn;
+	animation-timing-function: cubic-bezier(0.97, 0.31, 0.15, 0.69);
+	animation-duration: 630ms;
 }
 
 #login-picture
@@ -306,6 +313,7 @@ body
 {
 	text-align: center;
 	width:80px;
+	padding:5px;
 	font-family:"iosevka";
 	color:white;
 	background-color:transparent;
@@ -316,6 +324,7 @@ body
 {
 	text-align: center;
 	width: 80px;
+	padding:5px;
 	font-family:"iosevka";
 	color:white;
 	background-color:transparent;
@@ -328,7 +337,7 @@ body
 	cursor:pointer;
 	border-radius: 4px;
 	background-color: #4bd3ff;
-	text-shadow:0 0 3px #FFFFFF;
+	box-shadow:0 0 10px #00000048;
 }
 
 
