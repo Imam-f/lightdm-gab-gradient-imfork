@@ -1,8 +1,11 @@
-var children;
+var children, sessionList;
 var curr = 1;
+var currS = 1;
 var selected_user = null;
+var selected_session = null;
 var password = null;
 var $user = $("#name");
+var $session = $("#name-session");
 var $pass = $("#login-password");
 
 function show_error()
@@ -47,6 +50,30 @@ function select_user_from_list(idx, err)
     $pass.trigger('focus');
 }
 
+function setup_session_list()
+{
+    var $listSession = $session;
+    var to_append_session = null;
+    $.each(lightdm.sessions, function (i) {
+        var usernameS = lightdm.sessions[i].key;
+        var dispnameS = lightdm.sessions[i].name;
+        $listSession.append(
+            '<div id="'+usernameS+'">'+dispnameS+'</div>'
+        );
+    });
+    sessionList = $("#name-session").children().length;
+}
+
+function select_session_from_list(idx, err)
+{
+    var idx = idx || 0;
+
+    selected_session = lightdm.sessions[idx].key;
+
+    $pass.trigger('focus');
+}
+
+
 function start_authentication(username)
 {
    lightdm.cancel_timed_login ();
@@ -64,7 +91,7 @@ function authentication_complete()
 {
     if (lightdm.is_authenticated)
     	//lightdm.login (lightdm.authentication_user, lightdm.default_session); for lightdm-webkit-greeter
-	lightdm.login (lightdm.authentication_user, lightdm.start_session_sync, 'gnome'); //lightdm-webkit2-greeter
+	lightdm.login (lightdm.authentication_user, lightdm.start_session_sync, selected_session); //lightdm-webkit2-greeter
     else
    	{
     	select_user_from_list(curr-1, true);
@@ -98,7 +125,10 @@ function init()
 {
     setup_users_list();
     select_user_from_list(0, false);
+    setup_session_list();
+    select_session_from_list();
     show_message ("&nbsp");
+
     $("#last").on('click', function(e) {
     	curr--;
 	$pass.val("");
@@ -118,6 +148,26 @@ function init()
 		$("#name").css("margin-left", -31-(265*(curr-1))+"px");
 		show_message("&nbsp");
     });
+
+    $("#last-session").on('click', function(e) {
+    	currS--;
+		if(currS <= 0)
+			currS = sessionList;
+		if(sessionList != 1) select_session_from_list(currS-1, false);
+		$("#name-session").css("margin-left", -31-(265*(currS-1))+"px");
+		show_message("&nbsp");
+    });
+
+    $("#next-session").on('click', function (e) {
+    	currS++;
+		if(currS > sessionList)
+			currS = 1;
+		if(sessionList != 1) select_session_from_list(currS-1, false);
+		$("#name-session").css("margin-left", -31-(265*(currS-1))+"px");
+		show_message("&nbsp");
+    });
+
+
 }
 
 init();
