@@ -101,6 +101,7 @@ function init()
     show_message ("&nbsp");
     $("#last").on('click', function(e) {
     	curr--;
+	$pass.val("");
 		if(curr <= 0)
 			curr = children;
 		if(children != 1) select_user_from_list(curr-1, false);
@@ -110,6 +111,7 @@ function init()
 
     $("#next").on('click', function (e) {
     	curr++;
+	$pass.val("");
 		if(curr > children)
 			curr = 1;
 		if(children != 1) select_user_from_list(curr-1, false);
